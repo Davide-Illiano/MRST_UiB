@@ -1,0 +1,18 @@
+experimental   export-ignore
+impes          export-ignore
+ntpfa          export-ignore
+mpsamech       export-ignore
+vembiot        export-ignore
+.gitignore     export-ignore
+.gitattributes export-ignore
+
+# Special treatment of MATLAB binary files (especially *.MAT)
+*.mat -text -diff -merge
+*.p   -text -diff -merge
+*.slx -text -diff -merge
+*.mdl -text -diff -merge
+
+# File difference handling
+*.m      diff=matlab
+*.[ch]   diff=cpp
+*.[ch]pp diff=cpp
