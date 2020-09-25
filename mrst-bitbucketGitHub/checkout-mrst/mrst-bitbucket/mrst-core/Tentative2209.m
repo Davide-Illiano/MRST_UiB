@@ -12,7 +12,7 @@ clc
 mrstVerbose off
 gravity off
 
-for test = [2 4]
+for test = [1]
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
