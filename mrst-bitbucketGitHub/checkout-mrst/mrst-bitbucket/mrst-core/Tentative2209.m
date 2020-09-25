@@ -12,9 +12,9 @@ close all
 mrstVerbose off
 gravity off
 
-for test = [40]
+for test = [1]
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 1;
+    numbRealiz = 3;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -311,7 +311,9 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     eps_D2=sqrt(dt)*norm(Dy-D2)/D2/T
     
     time_steps = TR;
-% save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+% save(['Test20','/RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+% save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+
 
 end
 
