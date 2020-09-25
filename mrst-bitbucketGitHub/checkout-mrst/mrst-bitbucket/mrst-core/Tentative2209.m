@@ -1,18 +1,18 @@
 %% numerical diffusion test case
 % No reaction term, easy theta and K expressions
 %% IMPO: run mrst-bitbucket run code
-
+maxNumCompThreads(1)
 %global state;
 %initstate; state;
 
 mrstModule add ad-blackoil ad-core ad-props mrst-gui blackoil-sequential
 clear all
 close all
-clc
+% clc
 mrstVerbose off
 gravity off
 
-for test = [8]
+for test = [4]
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
