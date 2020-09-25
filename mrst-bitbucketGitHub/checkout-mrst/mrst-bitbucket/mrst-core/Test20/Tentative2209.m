@@ -11,15 +11,10 @@ close all
 % clc
 mrstVerbose off
 gravity off
-maxNumCompThreads(1)
 
-<<<<<<< HEAD
-for test = [2]
-=======
-for test = [1]
->>>>>>> 152f581db3ec4d0892c06c96bd1ecbd0dbe769ef
+for test = [20]
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 3;
+    numbRealiz = 25;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -260,11 +255,7 @@ colorbar;
         %     end
         
     end
-<<<<<<< HEAD
- save(['ConstantK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
-=======
 
->>>>>>> 152f581db3ec4d0892c06c96bd1ecbd0dbe769ef
         
     %%
     %{
@@ -280,7 +271,7 @@ colorbar;
     legend('Dx(t)','Dy(t)','Location','best'); legend('boxoff');
     xlabel('t');
     %print -depsc2 MxMy_DxDy_plots.eps
-    %}
+    
     % figure; hold all
     % subplot(1,2,1)
     % semilogy(t*dt,norm(Mx-0)/norm(mean(mean(vx))),'.',t*dt,norm(My-U_MEAN)/norm(U_MEAN),'.');
@@ -299,9 +290,8 @@ subplot(1,2,1)
 plot(t*dt,Mx,t*dt,My);
 legend('Mx(t)','My(t)','Location','best'); legend('boxoff');
 xlabel('t');
-%
+
 subplot(1,2,2)
-%
 plot(t*dt,Dx,t*dt,Dy);
 legend('Dx(t)','Dy(t)','Location','best'); legend('boxoff');
 xlabel('t');
@@ -321,7 +311,8 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     eps_D2=sqrt(dt)*norm(Dy-D2)/D2/T
     
     time_steps = TR;
-% save(['Test20','/RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+    Rand = randi(1000,1);
+save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
