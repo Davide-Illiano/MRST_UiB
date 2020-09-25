@@ -12,7 +12,7 @@ close all
 mrstVerbose off
 gravity off
 
-for test = [4]
+for test = [1]
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
@@ -254,10 +254,10 @@ colorbar;
         %     end
         
     end
-% save(['ConstantK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
+% save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
         
     %%
-    %
+    %{
     t=1:TR;
     
     figure;
@@ -279,7 +279,7 @@ colorbar;
     % semilogy(t*dt,norm(Dx-D1)/D1,'.',t*dt,norm(Dy-D2)/D2,'.');
     % legend('|D_{x}(t) - D_{0x}| / D_{0x}','|D_{y}(t) - D_{0y}| / D_{0y}','Location','best');
     %print -depsc2 VxVy_D0xD0y_plots.eps
-    
+    %}
     
     
     %{
