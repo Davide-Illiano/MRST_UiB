@@ -12,7 +12,7 @@ close all
 mrstVerbose off
 gravity off
 
-for test = [1]
+for test = [40]
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
@@ -32,6 +32,12 @@ for test = [1]
     y=c:dy:d;
     y2=(y(1:J-1)+y(2:J))/2;
     
+% diffusion/dispersion coeff
+    D = 0.01; %0.01;
+    D1 = D;
+    D2 = D;
+    
+    Pe = 1 * dx/D
     
     Lx=I-2; Ly=J-2;
     x0 = round(Ly*dy/2);%round(Lx*dx/8);  %x0=round(Lx*dx/10);
@@ -60,12 +66,7 @@ for test = [1]
     fluid.theta = @(p,c) theta_s + 0.*p + 0.*c;%getThetaCoupled(p, c, theta_r, theta_s, alpha, ng, nGM, A, B);     %1 ./ (1 - p - 1/10.*c);   % theta is a function of pressure and concentration
     fluid.Kmult = @(p,theta)  1 + 0.*p + 0.*theta;%getConductivity(p,theta, theta_r, theta_s, K_s, nGM);
     
-    % diffusion/dispersion coeff
-    D = 0.01; %0.01;
-    D1 = D;
-    D2 = D;
-    
-    Pe = 1 * dx/D
+
     
     xx = G.cells.centroids(:,1);
     p0 = 1 - ((xx-a)/(b-a));
@@ -254,7 +255,6 @@ colorbar;
         %     end
         
     end
-save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy');
 
         
     %%
@@ -311,6 +311,7 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     eps_D2=sqrt(dt)*norm(Dy-D2)/D2/T
     
     time_steps = TR;
+% save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 end
 
