@@ -2,7 +2,7 @@
 % No reaction term, easy theta and K expressions
 %% IMPO: run mrst-bitbucket run code
 maxNumCompThreads(1)
-%global state;
+%global state; 
 %initstate; state;
 
 mrstModule add ad-blackoil ad-core ad-props mrst-gui blackoil-sequential
