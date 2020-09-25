@@ -151,7 +151,7 @@ colorbar;
         d(size(d,1),:) = d(size(d,1)-1,:);
         d(:,1) = d(:,2);
         d(:,size(d,2)) = d(:,size(d,2)-1);
-        d = 0.* d + 15;
+%         d = 0.* d + 15;
         
         model.K = d;
         
@@ -254,7 +254,8 @@ colorbar;
         %     end
         
     end
-% save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
+save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy');
+
         
     %%
     %{
