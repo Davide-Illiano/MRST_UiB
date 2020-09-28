@@ -8,11 +8,11 @@ maxNumCompThreads(1)
 mrstModule add ad-blackoil ad-core ad-props mrst-gui blackoil-sequential
 clear all
 close all
-% clc
+clc
 mrstVerbose off
 gravity off
 
-for test = [20]
+for test = [10]
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
@@ -21,14 +21,14 @@ for test = [20]
     ZC2 = 1.0;
     KMean = 15;
     
-    I= test * 100 + 1; %801; %401; %
-    J= test * 50 + 1;  %401; %201; %
-    a=0; b=20;  %original 20 and 10 we use half
-    c=0; d=10;
-    dx=(b-a)/(I-1)
+    I= test * 130 + 1; %801; %401; %
+    J= test * 70 + 1;  %401; %201; %
+    a=0; b=13;  %original 20 and 10 we use half
+    c=0; d=7;
+    dx=(b-a)/(I-1);
     x=a:dx:b;
     x2=(x(1:I-1)+x(2:I))/2;
-    dy=(d-c)/(J-1)
+    dy=(d-c)/(J-1);
     y=c:dy:d;
     y2=(y(1:J-1)+y(2:J))/2;
     
@@ -37,7 +37,7 @@ for test = [20]
     D1 = D;
     D2 = D;
     
-    Pe = 1 * dx/D
+    Pe = 1 * dx/D;
     
     Lx=I-2; Ly=J-2;
     x0 = round(Ly*dy/2);%round(Lx*dx/8);  %x0=round(Lx*dx/10);
@@ -126,7 +126,7 @@ colorbar;
         nls = NonLinearSolver('maxIterations', 10000);
         
         bc = [];
-        bc = pside(bc,G,'XMin', 1 , 'sat', [1]);
+        bc = pside(bc,G,'XMin', 0.6183 , 'sat', [1]);
         bc = pside(bc,G,'XMax', 0 , 'sat', [1]);
         bc.c = 0.*ones(size(bc.sat,1), 1);
         
@@ -310,9 +310,18 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     eps_D1=sqrt(dt)*norm(Dx-D1)/D1/T
     eps_D2=sqrt(dt)*norm(Dy-D2)/D2/T
     
+    dx
+    dy
+    Pe
+    
     time_steps = TR;
+<<<<<<< HEAD
     %Rand = randi(100000,1)
 save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+=======
+%     Rand = randi(100000,1)
+save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+>>>>>>> 5038c3faff8da75759ba7173aeb4638fc0bf5d25
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 

@@ -81,7 +81,7 @@ K_MEAN=15;
 Jslope=0.05;
 cvel=exp(varK/2)/(Jslope*K_MEAN); 
 
-VcW = s.faceUpstr(upc,c).*cvel.*bWvW;
+VcW = s.faceUpstr(upc,c).*bWvW;
 
 VcD = -model.D.*s.Grad(c); %-s.Grad(c).*s.faceAvg(theta);
 
