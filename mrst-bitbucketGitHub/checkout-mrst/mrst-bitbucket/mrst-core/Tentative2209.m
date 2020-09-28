@@ -14,7 +14,7 @@ gravity off
 
 for test = [20]
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 25;
+    numbRealiz = 1;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -152,7 +152,7 @@ colorbar;
         d(size(d,1),:) = d(size(d,1)-1,:);
         d(:,1) = d(:,2);
         d(:,size(d,2)) = d(:,size(d,2)-1);
-%         d = 0.* d + 15;
+        d = 0.* d + 15;
         
         model.K = d;
         
@@ -311,8 +311,8 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     eps_D2=sqrt(dt)*norm(Dy-D2)/D2/T
     
     time_steps = TR;
-    Rand = randi(100000,1)
-save(['RandK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+    %Rand = randi(100000,1)
+save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
