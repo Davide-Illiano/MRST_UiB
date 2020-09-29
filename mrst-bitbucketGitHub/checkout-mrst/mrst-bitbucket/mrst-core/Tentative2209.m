@@ -37,7 +37,7 @@ for test = [10]
     D1 = D;
     D2 = D;
     
-    Pe = 1 * dx/D;
+    Pe = 0.7134 * dx/D;
     
     Lx=I-2; Ly=J-2;
     x0 = round(Ly*dy/2);%round(Lx*dx/8);  %x0=round(Lx*dx/10);
@@ -56,7 +56,7 @@ for test = [10]
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 1;    %-0.033 x=401 y=601
-        n = test * 10;
+        n = test * 1;
     end
     
     theta_s = 1;
@@ -315,13 +315,13 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     Pe
     
     time_steps = TR;
-<<<<<<< HEAD
+
     %Rand = randi(100000,1)
-save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
-=======
+%save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+
 %     Rand = randi(100000,1)
-save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
->>>>>>> 5038c3faff8da75759ba7173aeb4638fc0bf5d25
+save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'],'states{n}.c', 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
