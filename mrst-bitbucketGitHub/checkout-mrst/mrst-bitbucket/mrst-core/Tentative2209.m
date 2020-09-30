@@ -12,7 +12,7 @@ clc
 mrstVerbose off
 gravity off
 
-for test = [10]
+for test = [20]
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
@@ -56,7 +56,7 @@ for test = [10]
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 1;    %-0.033 x=401 y=601
-        n = test * 1;
+        n = 10;
     end
     
     theta_s = 1;
