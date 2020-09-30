@@ -11,10 +11,10 @@ close all
 clc
 mrstVerbose off
 gravity off
-
-for test = [20]
+tic
+for test = [10]
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 1;
+    numbRealiz = 10;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -56,7 +56,7 @@ for test = [20]
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 1;    %-0.033 x=401 y=601
-        n = 10;
+        n = 20 * test;
     end
     
     theta_s = 1;
@@ -152,7 +152,7 @@ colorbar;
         d(size(d,1),:) = d(size(d,1)-1,:);
         d(:,1) = d(:,2);
         d(:,size(d,2)) = d(:,size(d,2)-1);
-        d = 0.* d + 15;
+        %d = 0.* d + 15;
         
         model.K = d;
         
@@ -319,8 +319,8 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     %Rand = randi(100000,1)
 %save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
-%     Rand = randi(100000,1)
-save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'],'states{n}.c', 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+     Rand = randi(1000000,1)
+save(['NewProb_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
@@ -454,3 +454,4 @@ xlabel('Iterations')
 
 title('Rate fo convergence')
 %}
+toc
