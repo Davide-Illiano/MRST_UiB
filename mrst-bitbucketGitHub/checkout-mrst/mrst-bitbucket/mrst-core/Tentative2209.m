@@ -12,11 +12,8 @@ clc
 mrstVerbose off
 gravity off
 
-<<<<<<< Updated upstream
-for test = [20]
-=======
-for test = [2]
->>>>>>> Stashed changes
+for test = [1]
+    tic
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
@@ -40,13 +37,9 @@ for test = [2]
     D = 0.01; %0.01;
     D1 = D;
     D2 = D;
-    
-<<<<<<< Updated upstream
-    Pe = 0.7134 * dx/D;
-=======
+
     U_mean = 0.7134;
-    Pe = U_mean * dx/D;
->>>>>>> Stashed changes
+    Pe = U_mean * dx/D; 
     
     Lx=I-2; Ly=J-2;
     x0 = round(Ly*dy/2);%round(Lx*dx/8);  %x0=round(Lx*dx/10);
@@ -65,7 +58,7 @@ for test = [2]
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 1;    %-0.033 x=401 y=601
-        n = 10;
+        n = 20 * test;
     end
     
     theta_s = 1;
@@ -161,7 +154,7 @@ colorbar;
         d(size(d,1),:) = d(size(d,1)-1,:);
         d(:,1) = d(:,2);
         d(:,size(d,2)) = d(:,size(d,2)-1);
-        d = 0.* d + 15;
+%         d = 0.* d + 15;
         
         model.K = d;
         
@@ -169,9 +162,9 @@ colorbar;
         model = RichardsTransportEquationFixedPointSchemes(G, rock, fluid, 'Newton', 1, 'D', D , 'K', d);    %'Mixed', 1, 'L_p', .2, 'L_c', .01
         model.diffusion = 1;
         
-        tic
+        
         [~,states, report] = simulateScheduleAD(state0, model, schedule, 'nonlinearsolver', nls);
-        toc
+        
                
         v = faceFlux2cellVelocity(G,states{n}.flux);
         %%
@@ -217,7 +210,7 @@ colorbar;
             
             N = N + 1;
         end
-        
+        numb
     end
     %%
     %     save(['varK_GAUSS_10_MRST_Mesh(',num2str(I),',',num2str(J),')_',num2str(numb),'.mat'],'c','Vx','Vy') ;
@@ -264,10 +257,10 @@ colorbar;
         %     end
         
     end
-
+toc
         
     %%
-    %
+    %{
     t=1:TR;
     
     figure;
@@ -328,142 +321,12 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     %Rand = randi(100000,1)
 %save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
-%     Rand = randi(100000,1)
-<<<<<<< Updated upstream
-save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+     Rand = randi(100000,1)
+save(['NewProb_RandK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
-=======
 % save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
->>>>>>> Stashed changes
-% save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
 end
 
 
-%% Compare concentration
-%{
-load('c_nicu');
-c_Nicu = c_nicu;
-
-c_Nicu = [c_Nicu; zeros((size(c_Nicu,2)),1)'];
-c_Nicu = [zeros((size(c_Nicu,1)),1) c_Nicu];
-c_Nicu = [c_Nicu zeros((size(c_Nicu,1)),1)];
-c_Nicu = [zeros((size(c_Nicu,2)),1)';  c_Nicu];
-
-c_Nicu = c_Nicu(:);
-c_mrst = states{n}.c;
-
-disp('Error: ')
-norm(c_Nicu-c_mrst)/norm(c_mrst)
-%}
-%{
-figure
-plotToolbar(G,states)
-colorbar
-title('Numerical solution')
-%}
-%{
-p = vec2mat(states{n}.pressure,X);
-figure
-contourf(p,12)
-colormap(flipud(parula)); colorbar;
-set(gca,...
-'Units','normalized',...
-'FontUnits','points',...
-'FontWeight','normal',...
-'FontSize',17,...
-'FontName','Times')
-xlabel('$x$','Interpreter','latex'); ylabel('$z$','Interpreter','latex'); 
-title('$\Psi(x,z,t)$  loam, rand=1/Gauss','Interpreter','latex'); 
-print -depsc2 Psi_loam_gauss.eps
-
-c = vec2mat(states{n}.c,X);
-figure
-contourf(c,12)
-colormap(flipud(parula)); colorbar;
-set(gca,...
-'Units','normalized',...
-'FontUnits','points',...
-'FontWeight','normal',...
-'FontSize',17,...
-'FontName','Times')
-xlabel('$x$','Interpreter','latex'); ylabel('$z$','Interpreter','latex'); 
-title('$c(x,z,t)$ loam, rand=1/Gauss','Interpreter','latex'); 
-print -depsc2 c_loam_gauss.eps
-
-theta = vec2mat(states{n}.theta,X);
-figure
-contourf(theta,12)
-colormap(flipud(parula)); colorbar;
-set(gca,...
-'Units','normalized',...
-'FontUnits','points',...
-'FontWeight','normal',...
-'FontSize',17,...
-'FontName','Times')
-xlabel('$x$','Interpreter','latex'); ylabel('$z$','Interpreter','latex'); 
-title('$\theta(\Psi,c)$ loam, rand=1/Gauss','Interpreter','latex'); 
-print -depsc2 theta_loam_gauss.eps
-
-
-v = faceFlux2cellVelocity(G,states{n}.flux);
-
-for l = 1:J
-    vx(l,:) = v(((l-1)*I+1:l*I),1);
-    vy(l,:) = v(((l-1)*I+1:l*I),2);
-end
-
-vx = vec2mat(vx,X);
-figure
-contourf(vx,12)
-colormap(flipud(parula)); colorbar;
-set(gca,...
-'Units','normalized',...
-'FontUnits','points',...
-'FontWeight','normal',...
-'FontSize',17,...
-'FontName','Times')
-xlabel('$x$','Interpreter','latex'); ylabel('$z$','Interpreter','latex'); 
-title('$vx(x,z,t)$ loam, rand=1/Gauss','Interpreter','latex'); 
-print -depsc2 vx_loam_gauss.eps
-
-vy = vec2mat(vy,X);
-figure
-contourf(vy,12)
-colormap(flipud(parula)); colorbar;
-set(gca,...
-'Units','normalized',...
-'FontUnits','points',...
-'FontWeight','normal',...
-'FontSize',17,...
-'FontName','Times')
-xlabel('$x$','Interpreter','latex'); ylabel('$z$','Interpreter','latex'); 
-title('$vy(x,z,t)$ loam, rand=1/Gauss','Interpreter','latex'); 
-print -depsc2 vy_loam_gauss.eps
-
-%}
-%% Plot rate of convergence of linearization scheme plotting residual 
-% for pressure and concentration at the final time step
-%{
-
-for i = 1:size(report.ControlstepReports{n}.StepReports{1}.NonlinearReport,1)
-    res_p(i) = report.ControlstepReports{n}.StepReports{1}.NonlinearReport{i}.PressureSolver.StepReports{1}.NonlinearReport{1}.Residuals(1);
-end
-
-for i = 1:size(report.ControlstepReports{n}.StepReports{1}.NonlinearReport,1)
-    res_c(i) = report.ControlstepReports{n}.StepReports{1}.NonlinearReport{i}.TransportSolver.StepReports{1}.NonlinearReport{1}.Residuals(1);
-end
-
-
-%figure
-hold on
-plot(1:size(res_p,2),log10(res_p), 'LineWidth', 1.5);
-plot(1:size(res_c,2),log10(res_c), 'LineWidth', 1.5);
-legend('Pressure residuals', 'Concentration residuals')
-
-ylabel('log(Residuals)')
-xlabel('Iterations')
-
-title('Rate fo convergence')
-%}
