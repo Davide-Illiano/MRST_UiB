@@ -1,7 +1,7 @@
 %% numerical diffusion test case
 % No reaction term, easy theta and K expressions
 %% IMPO: run mrst-bitbucket run code
-maxNumCompThreads(1)
+% maxNumCompThreads(1)
 %global state; 
 %initstate; state;
 
@@ -12,7 +12,11 @@ clc
 mrstVerbose off
 gravity off
 
+<<<<<<< Updated upstream
 for test = [20]
+=======
+for test = [2]
+>>>>>>> Stashed changes
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 1;
     Nmod = 10; %10^2 ;
@@ -37,7 +41,12 @@ for test = [20]
     D1 = D;
     D2 = D;
     
+<<<<<<< Updated upstream
     Pe = 0.7134 * dx/D;
+=======
+    U_mean = 0.7134;
+    Pe = U_mean * dx/D;
+>>>>>>> Stashed changes
     
     Lx=I-2; Ly=J-2;
     x0 = round(Ly*dy/2);%round(Lx*dx/8);  %x0=round(Lx*dx/10);
@@ -258,7 +267,7 @@ colorbar;
 
         
     %%
-    %{
+    %
     t=1:TR;
     
     figure;
@@ -320,8 +329,12 @@ print -depsc2 VxVy_D0xD0y_plots.eps
 %save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 %     Rand = randi(100000,1)
-save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'],'states{n}.c', 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+<<<<<<< Updated upstream
+save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
+=======
+% save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+>>>>>>> Stashed changes
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
