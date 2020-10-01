@@ -12,7 +12,11 @@ clc
 mrstVerbose off
 gravity off
 
+<<<<<<< HEAD
 for test = [20]   %2 4 20 40
+=======
+for test = [20]   %2 4 20
+>>>>>>> c1de03788961f4f55197a3bfc14a8745671b48ce
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 100;
     Nmod = 10; %10^2 ;
@@ -25,7 +29,7 @@ for test = [20]   %2 4 20 40
     J= test * 5 + 1;  %401; %201; %
     a=0; b=2;  %original 20 and 10 we use half
     c=0; d=1;
-    dx=(b-a)/(I-1);
+    dx=(b-a)/(I-1)
     x=a:dx:b;
     x2=(x(1:I-1)+x(2:I))/2;
     dy=(d-c)/(J-1);

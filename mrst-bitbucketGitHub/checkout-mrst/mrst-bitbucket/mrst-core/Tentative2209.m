@@ -13,11 +13,11 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [10]
+for test = [2]
 
     tic
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 10;
+    numbRealiz = 100;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -259,7 +259,10 @@ colorbar;
         %     end
         
     end
+
 % save(['ConstantK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
+
+ %save(['ConstantK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
 
 toc
         
