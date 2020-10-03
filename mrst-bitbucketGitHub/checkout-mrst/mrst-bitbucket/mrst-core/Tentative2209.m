@@ -13,11 +13,11 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [2]
+for test = [10]
 
     tic
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 100;
+    numbRealiz = 10;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -351,10 +351,10 @@ c_Nicu = [zeros((size(c_Nicu,2)),1)';  c_Nicu];
 
 c_Nicu = c_Nicu(:);
 c_mrst = states{n}.c;
-=======
+
      Rand = randi(100000,1)
 save(['NewProb_RandK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
->>>>>>> f77ee09fec118f0064c76c76946f698ee856a2f7
+
 
 % save(['NewProb_constantK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
@@ -362,7 +362,6 @@ save(['NewProb_RandK_MRST_Mesh(',num2str(I),',',num2str(J),')_n(',num2str(n),')'
 end
 
 
-<<<<<<< HEAD
 title('Rate fo convergence')
 %}
 toc
