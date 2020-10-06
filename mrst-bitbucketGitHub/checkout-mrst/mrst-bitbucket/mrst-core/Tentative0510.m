@@ -1,7 +1,7 @@
 %% numerical diffusion test case
 % No reaction term, easy theta and K expressions
 %% IMPO: run mrst-bitbucket run code
-% maxNumCompThreads(1)
+maxNumCompThreads(1)
 %global state; 
 %initstate; state;
 
@@ -14,7 +14,7 @@ gravity off
 
 for test = [10]
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 33;
+    numbRealiz = 34;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 0.1;
@@ -317,8 +317,13 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     Pe
     
     time_steps = TR;
+%<<<<<<< HEAD:mrst-bitbucketGitHub/checkout-mrst/mrst-bitbucket/mrst-core/ReducedExample0510/Tentative0510.m
 %Rand = randi(100000,1)
-save(['Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_test1.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
+%save(['Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_test1.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
+%=======
+%     Rand = randi(100000,1)
+save(['Example0510_Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_test3.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
+%>>>>>>> 8eb8f928056e271b09ed0b2e09cfd7945d943e53:mrst-bitbucketGitHub/checkout-mrst/mrst-bitbucket/mrst-core/Tentative0510.m
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
