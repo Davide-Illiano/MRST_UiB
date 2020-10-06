@@ -13,7 +13,7 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [10]
+for test = [1]
 
     tic
     clear Vx Vy Mx My Dx Dy p_mrst
@@ -28,7 +28,7 @@ for test = [10]
     J= test * 70 + 1;  %401; %201; %
     a=0; b=13;  %original 20 and 10 we use half
     c=0; d=7;
-    dx=(b-a)/(I-1);
+    dx=(b-a)/(I-1)
     x=a:dx:b;
     x2=(x(1:I-1)+x(2:I))/2;
     dy=(d-c)/(J-1);
@@ -40,12 +40,12 @@ for test = [10]
     D1 = D;
     D2 = D;
 
-    U_mean = 0.7134;
+    U_mean = 0.7134;   % cvel = 1 in richards transp eq.
     Pe = U_mean * dx/D; 
     
     Lx=I-2; Ly=J-2;
-    x0 = round(Lx*dx/8);  %x0=round(Lx*dx/10);
-    y0 = round(Ly*dy/2);
+    x0 = 1; %round(Lx*dx/10);  %x0=round(Lx*dx/10);
+    y0 = 3.5; %round(Ly*dy/2);
     
     G = cartGrid([I,J], [b, d]);  % original 20, 10 we use hald
     G = computeGeometry(G);
@@ -54,13 +54,13 @@ for test = [10]
     rock = struct('perm', ones(G.cells.num, 1), ...
         'poro', ones(G.cells.num, 1));
     
-    T = 10;   % original 10 we use half
+    T = 10;   %
     
     itest=1; % 1: U=-0.008; 2: U=-0.08; 3: U=0.8
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 0.7134;    %-0.033 x=401 y=601
-        n = 20 * test;
+        n = 10 * test;
     end
     
     theta_s = 1;

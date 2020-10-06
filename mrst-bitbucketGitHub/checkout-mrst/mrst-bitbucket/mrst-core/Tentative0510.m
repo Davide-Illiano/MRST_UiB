@@ -8,11 +8,11 @@
 mrstModule add ad-blackoil ad-core ad-props mrst-gui blackoil-sequential
 clear all
 close all
-clc
+% clc
 mrstVerbose off
 gravity off
 
-for test = [10]
+for test = [1 2]  % mesh 0.01 0.005
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 100;
     Nmod = 10; %10^2 ;
@@ -21,11 +21,11 @@ for test = [10]
     ZC2 = 0.1;
     KMean = 15;
     
-    I= test * 130 + 1; %801; %401; %
-    J= test * 70 + 1;  %401; %201; %
-    a=0; b=13;  %original 20 and 10 we use half
-    c=0; d=7;
-    dx=(b-a)/(I-1)
+    I= test * 200 + 1; %801; %401; %
+    J= test * 100 + 1;  %401; %201; %
+    a=0; b=2;  %original 20 and 10 we use half
+    c=0; d=1;
+    dx=(b-a)/(I-1);
     x=a:dx:b;
     x2=(x(1:I-1)+x(2:I))/2;
     dy=(d-c)/(J-1);
@@ -41,8 +41,8 @@ for test = [10]
     Pe = U_mean * dx/D;
     
     Lx=I-2; Ly=J-2;
-    x0 = round(Ly*dy/2);%round(Lx*dx/8);  %x0=round(Lx*dx/10);
-    y0 = round(Ly*dy/2);%round(Ly*dy/2);
+    x0 = 0.2;%round(Lx*dx/8);  %x0=round(Lx*dx/10);
+    y0 = 0.5;%round(Ly*dy/2);
     
     G = cartGrid([I,J], [b, d]);  % original 20, 10 we use hald
     G = computeGeometry(G);
@@ -57,7 +57,7 @@ for test = [10]
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 0.7134;    %-0.033 x=401 y=601
-        n = test * 5;
+        n = test * 20;
     end
     
     theta_s = 1;
@@ -70,7 +70,7 @@ for test = [10]
 
     
     xx = G.cells.centroids(:,1);
-    p0 = 0.1 - 0.1*((xx-a)/(b-a));
+    p0 = 0.1 - 0.1*((xx-a)/(b-a));  % not really need
     
     ti = 0.0001;
     gss=Gauss_IC(ti,dx,dy,x0,y0,Lx,Ly,U_MEAN,D);
@@ -127,7 +127,7 @@ colorbar;
         nls = NonLinearSolver('maxIterations', 10000);
         
         bc = [];
-        bc = pside(bc,G,'XMin', 0.6183 , 'sat', [1]);
+        bc = pside(bc,G,'XMin', 0.1 , 'sat', [1]);
         bc = pside(bc,G,'XMax', 0 , 'sat', [1]);
         bc.c = 0.*ones(size(bc.sat,1), 1);
         
@@ -209,6 +209,7 @@ colorbar;
             
             N = N + 1;
         end
+
         numb
     end
     %%
@@ -317,9 +318,11 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     Pe
     
     time_steps = TR;
-%     Rand = randi(100000,1)
-save(['Example0510_Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
+   % Rand = randi(100000,1)
+save(['Tentative0510_Reduced_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+% Rand = randi(100000,1)
+% save(['newK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx',  'My', 'n');
 
 
 end
