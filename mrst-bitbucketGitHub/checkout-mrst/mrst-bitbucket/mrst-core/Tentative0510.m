@@ -318,7 +318,7 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     
     time_steps = TR;
 %     Rand = randi(100000,1)
-save(['Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
+save(['Example0510_Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
