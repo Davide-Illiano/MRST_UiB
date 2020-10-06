@@ -13,11 +13,11 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [1]
+for test = [10 ]
 
     tic
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 10;
+    numbRealiz = 50;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -60,7 +60,7 @@ for test = [1]
     if itest==1
         K_s = 15; % by mofifying K_sat ===> diferent Pecelt numbers
         U_MEAN = 0.7134;    %-0.033 x=401 y=601
-        n = 10 * test;
+        n = 20 * test;
     end
     
     theta_s = 1;
@@ -330,8 +330,8 @@ print -depsc2 VxVy_D0xD0y_plots.eps
 %save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 
-     Rand = randi(1000000,1)
-save(['NewProb_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+     %Rand = randi(1000000,1)
+save(['Tentative2209_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_second50.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
