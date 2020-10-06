@@ -12,11 +12,15 @@ clc
 mrstVerbose off
 gravity off
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 for test = [20]   %2 4 20 40
 =======
 for test = [20]   %2 4 20
 >>>>>>> c1de03788961f4f55197a3bfc14a8745671b48ce
+=======
+for test = [2 4 20]   %2 4 20
+>>>>>>> Stashed changes
     clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 100;
     Nmod = 10; %10^2 ;
@@ -76,7 +80,7 @@ for test = [20]   %2 4 20
     xx = G.cells.centroids(:,1);
     p0 = 0.1 - 0.1*((xx-a)/(b-a));
     
-    ti = 0.01;
+    ti = 0.0001;
     gss=Gauss_IC(ti,dx,dy,x0,y0,Lx,Ly,U_MEAN,D);
     c0 = gss/sum(sum(gss)); %/sum(sum(gss));
     
@@ -157,7 +161,11 @@ colorbar;
         d(size(d,1),:) = d(size(d,1)-1,:);
         d(:,1) = d(:,2);
         d(:,size(d,2)) = d(:,size(d,2)-1);
+<<<<<<< Updated upstream
         %d = 0.* d + 15;
+=======
+%         d = 0.* d + 15;
+>>>>>>> Stashed changes
         
         model.K = d;
         
