@@ -14,7 +14,7 @@ gravity off
 
 for test = [1 2]  % mesh 0.01 0.005
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 34;
+    numbRealiz = 100;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 0.1;
@@ -318,18 +318,9 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     Pe
     
     time_steps = TR;
-<<<<<<< HEAD
-%<<<<<<< HEAD:mrst-bitbucketGitHub/checkout-mrst/mrst-bitbucket/mrst-core/ReducedExample0510/Tentative0510.m
-%Rand = randi(100000,1)
-%save(['Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_test1.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
-%=======
-%     Rand = randi(100000,1)
-save(['Example0510_Reduce_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_test3.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
-%>>>>>>> 8eb8f928056e271b09ed0b2e09cfd7945d943e53:mrst-bitbucketGitHub/checkout-mrst/mrst-bitbucket/mrst-core/Tentative0510.m
-=======
-   % Rand = randi(100000,1)
+
+
 save(['Tentative0510_Reduced_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
->>>>>>> ea4a3cb2d0575158c56f421b084ffcf25f14a508
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 % Rand = randi(100000,1)
 % save(['newK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx',  'My', 'n');
