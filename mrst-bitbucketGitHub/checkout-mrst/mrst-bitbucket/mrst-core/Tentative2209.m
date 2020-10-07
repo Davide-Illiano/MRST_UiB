@@ -13,11 +13,10 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [10 ]
-
-    tic
+for test = [10]
+    
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 50;
+    numbRealiz = 10;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 1.0;
@@ -28,7 +27,7 @@ for test = [10 ]
     J= test * 70 + 1;  %401; %201; %
     a=0; b=13;  %original 20 and 10 we use half
     c=0; d=7;
-    dx=(b-a)/(I-1)
+    dx=(b-a)/(I-1);
     x=a:dx:b;
     x2=(x(1:I-1)+x(2:I))/2;
     dy=(d-c)/(J-1);
@@ -264,7 +263,6 @@ colorbar;
 
  %save(['ConstantK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'Mx', 'Dx', 'My', 'Dy');
 
-toc
         
     %%
     %{
@@ -331,7 +329,7 @@ print -depsc2 VxVy_D0xD0y_plots.eps
 
 
      %Rand = randi(1000000,1)
-save(['Tentative2209_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_second50.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+save(['Tentative2209_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_first10.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
