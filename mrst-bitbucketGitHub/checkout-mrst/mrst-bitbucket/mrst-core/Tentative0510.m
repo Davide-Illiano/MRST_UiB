@@ -12,9 +12,9 @@ close all
 mrstVerbose off
 gravity off
 
-for test = [1 2]  % mesh 0.01 0.005
+for test = [10]  % mesh 0.01 0.005
     clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 100;
+    numbRealiz = 34;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 0.1;
@@ -320,7 +320,7 @@ print -depsc2 VxVy_D0xD0y_plots.eps
     time_steps = TR;
 
 
-save(['Tentative0510_Reduced_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
+save(['Tentative0510_Reduced_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_third_set.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'n');
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 % Rand = randi(100000,1)
 % save(['newK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(Rand),'.mat'], 'dx', 'Pe', 'Mx',  'My', 'n');
