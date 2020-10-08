@@ -212,6 +212,8 @@ colorbar;
         end
 
         numb
+        save(['PartialTentative0510_Reduced_Rand_K_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_first',num2str(numb),'.mat'], 'dx', 'Pe', 'Mx', 'My', 'n');
+
     end
     %%
     %     save(['varK_GAUSS_10_MRST_Mesh(',num2str(I),',',num2str(J),')_',num2str(numb),'.mat'],'c','Vx','Vy') ;
