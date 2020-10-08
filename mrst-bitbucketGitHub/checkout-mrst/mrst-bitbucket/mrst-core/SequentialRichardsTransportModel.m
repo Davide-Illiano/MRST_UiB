@@ -32,21 +32,22 @@ classdef SequentialRichardsTransportModel < ReservoirModel
         reupdatePressure
         domainType
         forces
+        D
+        K
+        vw
+        p
+        states_flow
     end
     
     methods
+
         
-        function forces = getValidDrivingForces(model)
-        forces = getValidDrivingForces@ReservoirModel(model);
-        forces.analyticalForce1 = [];
-        forces.analyticalForce2 = [];
-        end
-        
-        function model = SequentialRichardsTransportModel(RichardsEquationModel, TransportEquationModel, varargin)
+        function model = SequentialRichardsTransportModel(states_flow, RichardsEquationModel, TransportEquationModel, varargin)
             model = model@ReservoirModel([]);
             % Set up defaults
             model.RichardsEquationModel  = RichardsEquationModel;
             model.TransportEquationModel = TransportEquationModel;
+            model.states_flow = states_flow;
             model.outerTolerance = 1e-6;  %-5
             model.outerCheckWellConvergence = false;
             model.maxOuterIterations = 20000;   % it was 2
@@ -94,11 +95,12 @@ classdef SequentialRichardsTransportModel < ReservoirModel
             
             % First, solve the pressure using the pressure nonlinear
             % solver.
-            [state, pressureReport] = ...
-                psolver.solveTimestep(state0, dt, model.RichardsEquationModel,...
-                            'initialGuess', state, ...
-                            forceArg{:});
-            pressure_ok = pressureReport.Converged || psolver.continueOnFailure;
+%             [state, pressureReport] = ...
+%                 psolver.solveTimestep(state0, dt, model.RichardsEquationModel,...
+%                             'initialGuess', state, ...
+%                             forceArg{:});
+            state = model.states_flow;            
+            pressure_ok = 1;
             
             if pressure_ok    
                 if ~isempty(drivingForces.bc)
@@ -143,10 +145,8 @@ classdef SequentialRichardsTransportModel < ReservoirModel
                     % updated quantities after transport (mobility, density
                     % and so on?)
                     [~, values] = model.RichardsEquationModel.checkConvergence(problem);
-                    values = pressureReport.StepReports{end}.NonlinearReport{end}.Residuals(1);
-                    values_p = pressureReport.StepReports{end}.NonlinearReport{end}.Residuals(1); 
                     values_c = transportReport.StepReports{end}.NonlinearReport{end}.Residuals(1);
-                    %values = [values_p, values_c];
+                    values = [ values_c];
                 end
                 
                 if model.outerCheckWellConvergence
@@ -162,7 +162,7 @@ classdef SequentialRichardsTransportModel < ReservoirModel
                %converged_c = all(values_c < model.outerTolerance);
                %converged_p1 = all(values_p > 0);
                %converged_c1 = all(values_c > 0);
-               converged = all(values_p < model.outerTolerance) && all(values_c < model.outerTolerance); % && converged_c1 && converged_p1;
+               converged = all(values_c < model.outerTolerance); % && converged_c1 && converged_p1;
                
                
                 if model.verbose
@@ -192,7 +192,6 @@ classdef SequentialRichardsTransportModel < ReservoirModel
                                     'Residuals',       values ...
                                     );
                                 
-            report.PressureSolver =  pressureReport;
             report.TransportSolver = transportReport;
             
             if model.reupdatePressure && converged
@@ -232,22 +231,3 @@ classdef SequentialRichardsTransportModel < ReservoirModel
         
     end
 end
-
-%{
-Copyright 2009-2017 SINTEF ICT, Applied Mathematics.
-
-This file is part of The MATLAB Reservoir Simulation Toolbox (MRST).
-
-MRST is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-MRST is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with MRST.  If not, see <http://www.gnu.org/licenses/>.
-%}
