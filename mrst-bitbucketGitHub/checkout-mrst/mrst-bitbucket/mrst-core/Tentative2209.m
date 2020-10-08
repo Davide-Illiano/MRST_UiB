@@ -212,8 +212,13 @@ colorbar;
             N = N + 1;
         end
         numb
+<<<<<<< HEAD
        save(['Partial_Tentative2209_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(numb),'_third.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
  
+=======
+        save(['Partial_Tentative2209_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(numb),'_first.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+
+>>>>>>> 9e7699a5209cd4083522662d7fc0cf2a5c7d88a7
     end
     %%
     %     save(['varK_GAUSS_10_MRST_Mesh(',num2str(I),',',num2str(J),')_',num2str(numb),'.mat'],'c','Vx','Vy') ;
