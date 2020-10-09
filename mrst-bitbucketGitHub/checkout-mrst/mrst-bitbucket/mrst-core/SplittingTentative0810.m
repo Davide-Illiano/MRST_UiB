@@ -15,7 +15,7 @@ gravity off
 tic
 for test = [10]
      clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 10;
+    numbRealiz = 7;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 0.1;
@@ -224,7 +224,7 @@ for test = [10]
             N = N + 1;
         end
         numb
-       save(['Partial_SplittingTentative0810_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(numb),'_third10.mat'], 'dx', 'Pe', 'Mx', 'My');
+       save(['Partial_SplittingTentative0810_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')',num2str(numb+3),'_first10.mat'], 'dx', 'Pe', 'Mx', 'My');
  
     end
     %%
@@ -273,7 +273,7 @@ for test = [10]
 
 
      %Rand = randi(1000000,1)
-save(['SplittingTentative0810_Reduced_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_third10.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+save(['SplittingTentative0810_Reduced_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_first10.mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
 % save(['Test20','/tentative(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
