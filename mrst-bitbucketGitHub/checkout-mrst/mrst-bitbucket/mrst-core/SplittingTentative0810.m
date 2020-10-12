@@ -13,7 +13,7 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [1]0
+for test = [10]
      clear Vx Vy Mx My Dx Dy p_mrst
     numbRealiz = 10;
     Nmod = 10; %10^2 ;
