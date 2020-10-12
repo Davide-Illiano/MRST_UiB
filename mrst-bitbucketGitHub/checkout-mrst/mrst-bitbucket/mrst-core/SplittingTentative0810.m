@@ -13,9 +13,9 @@ mrstVerbose off
 gravity off
 
 tic
-for test = [10]
+for test = [1]
      clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 5;
+    numbRealiz = 1;
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 0.1;
@@ -114,6 +114,7 @@ for test = [10]
     
     
     for numb = 1:numbRealiz
+        tic
         %% Time domain [0,1]
         time = T;  % max time
         dT = time/n;
@@ -162,7 +163,9 @@ for test = [10]
         
         
         % solve flow
+        tic
         [~,states_flow, report_flow] = simulateScheduleAD(state0, model_flow, schedule_flow, 'nonlinearsolver', nls);
+        time_flow = toc;
         
         v = faceFlux2cellVelocity(G,states_flow{n_flow}.flux);
         
@@ -184,8 +187,9 @@ for test = [10]
 %         model = SequentialTransportEquationModelnewBC(G, rock, fluid, 'Newton', 1,...
 %             'D', D , 'K', d,'p_flow', states_flow{n_flow}.pressure, 'vw', states_flow{n_flow}.vw);    
 %         model.diffusion = 1;
+        tic 
         [~,states, report] = simulateScheduleAD(state0, model, schedule, 'nonlinearsolver', nls);
-        
+        time_transp = toc;
                
         c = p_mrst;
         %     save(['varK_GAUSS_10_MRST_Mesh(',num2str(I),',',num2str(J),')_'num2str(numb),'.mat'],'c','Vx','Vy') ;
@@ -224,8 +228,8 @@ for test = [10]
             N = N + 1;
         end
         numb
-       save(['Partial_SplittingTentative0810_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_5_num',num2str(numb+5),'.mat'], 'dx', 'Pe', 'Mx', 'My');
- 
+       save(['Partial_SplittingTentative0810_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_1_num',num2str(numb),'.mat'], 'dx', 'Pe', 'Mx', 'My','Varx', 'Vary', 'time_flow', 'time_transp');
+    time_realiz = toc
     end
     %%
     %     save(['varK_GAUSS_10_MRST_Mesh(',num2str(I),',',num2str(J),')_',num2str(numb),'.mat'],'c','Vx','Vy') ;
