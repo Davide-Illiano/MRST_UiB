@@ -228,7 +228,7 @@ for test = [10]
             N = N + 1;
         end
         numb
-       save(['Partial_SplittingTentative0810_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_3_num',num2str(numb),'.mat'], 'dx', 'Pe', 'Mx', 'My','Varx', 'Vary', 'time_flow', 'time_transp');
+       save(['Partial_SplittingTentative0810_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_5_num',num2str(numb),'.mat'], 'dx', 'Pe', 'Mx', 'My','Varx', 'Vary', 'time_flow', 'time_transp');
     time_realiz = toc
     end
     %%
