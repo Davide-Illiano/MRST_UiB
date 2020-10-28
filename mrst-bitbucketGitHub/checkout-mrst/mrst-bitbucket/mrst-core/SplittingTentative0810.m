@@ -17,7 +17,7 @@ gravity off
 tic
 for test = [10]
      clear Vx Vy Mx My Dx Dy p_mrst
-    numbRealiz = 10;  
+    numbRealiz = 5;  
     Nmod = 10; %10^2 ;
     varK= 0.1 ;
     ZC1 = 0.1;
@@ -231,7 +231,7 @@ for test = [10]
             N = N + 1;
         end
         numb
-       save(['NewPartial_SplittingTentative2110_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_6_num',num2str(numb),'.mat'], 'dx', 'Pe', 'Mx', 'My','Varx', 'Vary', 'time_flow', 'time_transp');
+       save(['NewPartial_SplittingTentative2110_RandK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),')_7_num',num2str(numb+5),'.mat'], 'dx', 'Pe', 'Mx', 'My','Varx', 'Vary', 'time_flow', 'time_transp');
     time_realiz = toc
     end
     %%
