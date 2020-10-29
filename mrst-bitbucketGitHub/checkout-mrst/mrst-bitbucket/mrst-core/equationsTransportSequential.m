@@ -51,7 +51,12 @@ VcW = s.faceUpstr(upc,c).*vW;
 vW = vW .* 0;
 vW(1:size(vW,1)/2) = 0.075/100;
 
-VcW = s.faceUpstr(upc,c).*vW;   
+% VcW = s.faceUpstr(upc,c).*vW;   
+% VcD = -model.D.*s.Grad(c);
+% 
+% Vc = VcW + VcD;
+
+VcW = s.faceAvg(c).*vW;   
 VcD = -model.D.*s.Grad(c);
 
 Vc = VcW + VcD;
