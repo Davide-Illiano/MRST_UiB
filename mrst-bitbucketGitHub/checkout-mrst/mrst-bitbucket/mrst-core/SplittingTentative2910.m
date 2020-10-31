@@ -156,7 +156,7 @@ for test = [10]
         d(size(d,1),:) = d(size(d,1)-1,:);
         d(:,1) = d(:,2);
         d(:,size(d,2)) = d(:,size(d,2)-1);
-	d = 0.* d + 15;
+	%d = 0.* d + 15;
         
         model.K = d;
         
@@ -278,7 +278,7 @@ for test = [10]
     %Rand = randi(100000,1)
 %save(['ConstK_MXEtc_MRST_Mesh(',num2str(I),',',num2str(J),')_n(,',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
 
-save(['SplittingTentative2710_Reduced_ConstK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
+save(['SplittingTentative2710_Reduced_ConstK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2', 'time_flow', 'time_transp');
 
      %Rand = randi(1000000,1)
 %save(['SplittingTentative0810_Reduced_ConstK_MRST_Mesh(',num2str(dx),',',num2str(dy),')_n(',num2str(n),').mat'], 'dx', 'Pe', 'Mx', 'Dx', 'My', 'Dy', 'eps_D1', 'eps_D2');
